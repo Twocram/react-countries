@@ -20,36 +20,40 @@ const Home = () => {
   return (
     <>
       <Controls />
-      <List>
-        {countries.map((c) => {
-          const countryInfo = {
-            img: c.flags.png,
-            name: c.name,
-            info: [
-              {
-                title: 'Population',
-                description: c.population.toLocaleString(),
-              },
-              {
-                title: 'Region',
-                description: c.region,
-              },
-              {
-                title: 'Capital',
-                description: c.capital,
-              },
-            ],
-          };
+      {countries.length > 0 ? (
+        <List>
+          {countries.map((c) => {
+            const countryInfo = {
+              img: c.flags.png,
+              name: c.name,
+              info: [
+                {
+                  title: 'Population',
+                  description: c.population.toLocaleString(),
+                },
+                {
+                  title: 'Region',
+                  description: c.region,
+                },
+                {
+                  title: 'Capital',
+                  description: c.capital,
+                },
+              ],
+            };
 
-          return (
-            <Card
-              key={c.name}
-              onClick={() => navigate(`/country/${c.name}`)}
-              {...countryInfo}
-            />
-          );
-        })}
-      </List>
+            return (
+              <Card
+                key={c.name}
+                onClick={() => navigate(`/country/${c.name}`)}
+                {...countryInfo}
+              />
+            );
+          })}
+        </List>
+      ) : (
+        <h2>Loading...</h2>
+      )}
     </>
   );
 };
