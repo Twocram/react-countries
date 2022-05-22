@@ -45,7 +45,14 @@ const Header = () => {
         <Wrapper>
           <Title>Where is the world ?</Title>
           <ModeSwitcher onClick={toggleTheme}>
-            <IoMoon /> Light Theme
+            {theme === "light" ? (
+              <IoMoonOutline size={"14px"} />
+            ) : (
+              <IoMoon size={"14px"} />
+            )}
+            <span style={{ marginLeft: "0.75rem" }}>
+              {theme === "light" ? "light" : "dark"} Theme
+            </span>
           </ModeSwitcher>
         </Wrapper>
       </Container>
