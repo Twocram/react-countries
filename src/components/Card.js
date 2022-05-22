@@ -1,21 +1,50 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  border-radius: var(--radii);
+  background-color: var(--colors-ui-base);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  overflow: hidden;
+`;
 
-const CardImage = styled.img``;
+const CardImage = styled.img`
+  display: block;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: var(--shadow);
+`;
 
-const CardBody = styled.div``;
+const CardBody = styled.div`
+  padding: 1rem 1.5rem 2rem;
+`;
 
-const CardTitle = styled.h3``;
+const CardTitle = styled.h3`
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+`;
 
-const CardList = styled.ul``;
+const CardList = styled.ul`
+  list-style-type: none;
+  padding: 1rem 0 0;
+`;
 
-const CardListItem = styled.li``;
+const CardListItem = styled.li`
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  font-weight: var(--fw-bold);
+
+  & > b {
+    font-weight: var(--fw-bold);
+  }
+`;
 
 const Card = ({ img, name, info = [], onClick }) => {
   return (
     <Wrapper onClick={onClick}>
-      <CardImage />
+      <CardImage src={img} alt={name} />
       <CardBody>
         <CardTitle>{name}</CardTitle>
         <CardList>
