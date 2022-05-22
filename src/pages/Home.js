@@ -3,9 +3,11 @@ import { ALL_COUNTRIES } from '../config';
 import Controls from '../components/Controls';
 import List from '../components/List';
 import Card from '../components/Card';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [countries, setCountries] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchCountries();
@@ -39,7 +41,13 @@ const Home = () => {
             ],
           };
 
-          return <Card key={c.name} {...countryInfo} />;
+          return (
+            <Card
+              key={c.name}
+              onClick={() => navigate(`/country/${c.name}`)}
+              {...countryInfo}
+            />
+          );
         })}
       </List>
     </>
