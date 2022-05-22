@@ -22,4 +22,4 @@ export const CustomSelect = styled(Select).attrs({
         : 'var(--colors-ui-base)',
     }),
   },
-});
+})``;
