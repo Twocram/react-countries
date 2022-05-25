@@ -3,6 +3,7 @@ import { IoArrowBack } from 'react-icons/io5';
 import { useParams, useNavigate } from 'react-router-dom';
 import { searchByCountry } from '../config';
 import styled from 'styled-components';
+import Info from '../components/Info';
 
 const Button = styled.button`
   padding: 0 1rem;
@@ -36,6 +37,7 @@ const Details = () => {
   return (
     <div>
       <Button onClick={() => navigate('/')}>Go back</Button>
+      {country && <Info {...country} />}
     </div>
   );
 };
