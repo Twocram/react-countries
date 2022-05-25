@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { filterByCode } from '../config';
 
 const Wrapper = styled.section`
   margin-top: 3rem;
@@ -96,9 +98,20 @@ const Info = (props) => {
     currencies = [],
     languages = [],
     borders = [],
-    push,
+    navigate,
   } = props;
-  console.log(borders);
+
+  const [neighbors, setNeighbors] = useState([]);
+  useEffect(() => {
+    fetchNeighbors();
+  }, [borders]);
+
+  const fetchNeighbors = async () => {
+    await fetch(filterByCode(borders))
+      .then((data) => data.json())
+      .then((data) => setNeighbors(data.map((c) => c.name)));
+  };
+  //   console.log(borders);
   return (
     <Wrapper>
       <InfoImage src={flag} alt={name} />
@@ -152,8 +165,10 @@ const Info = (props) => {
             <span>There is no border countries</span>
           ) : (
             <TagGroup>
-              {borders.map((b) => (
-                <Tag key={b}>{b}</Tag>
+              {neighbors.map((n) => (
+                <Tag key={n} onClick={() => navigate(`/country/${n}`)}>
+                  {n}
+                </Tag>
               ))}
             </TagGroup>
           )}
