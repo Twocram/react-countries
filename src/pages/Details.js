@@ -28,8 +28,6 @@ const Details = () => {
     fetchAroundCountries();
   }, [name]);
 
-  console.log(country);
-
   const fetchAroundCountries = async () => {
     const data = await fetch(searchByCountry(name)).then((data) => data.json());
     setCountry(data[0]);

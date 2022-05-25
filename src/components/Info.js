@@ -111,7 +111,7 @@ const Info = (props) => {
       .then((data) => data.json())
       .then((data) => setNeighbors(data.map((c) => c.name)));
   };
-  //   console.log(borders);
+
   return (
     <Wrapper>
       <InfoImage src={flag} alt={name} />
