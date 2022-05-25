@@ -13,6 +13,7 @@ const Button = styled.button`
   border-radius: var(--radii);
   border: none;
   display: flex;
+  align-items: center;
   gap: 0.75rem;
   color: var(--color-text);
   cursor: pointer;
@@ -36,7 +37,10 @@ const Details = () => {
 
   return (
     <div>
-      <Button onClick={() => navigate('/')}>Go back</Button>
+      <Button onClick={() => navigate('/')}>
+        <IoArrowBack />
+        Back
+      </Button>
       {country && <Info {...country} />}
     </div>
   );
