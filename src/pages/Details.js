@@ -25,7 +25,11 @@ const Details = () => {
   const [country, setCountry] = useState(null);
 
   useEffect(() => {
-    fetchAroundCountries();
+    try {
+      fetchAroundCountries();
+    } catch (error) {
+      console.log(`Error with connect: ${error}`);
+    }
   }, [name]);
 
   const fetchAroundCountries = async () => {
