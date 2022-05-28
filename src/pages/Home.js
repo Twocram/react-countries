@@ -25,7 +25,11 @@ const Home = () => {
   };
 
   useEffect(() => {
-    fetchCountries();
+    try {
+      fetchCountries();
+    } catch (error) {
+      console.log(`Error with fetching countries: ${error}`);
+    }
   }, []);
 
   useEffect(() => {
